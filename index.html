@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="stylesheet.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body {
+    background-image: url('medi.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+</style>
+<style id="#upg1">
+#upg1 {
+    display: none;
+}
+</style>
+<style id="#upg2">
+    #upg1 {
+        display: none;
+    }
+    </style>
+<body>
+    
+    <div id="Main">
+        <div id="Top">
+            <img src="ying.png" alt="" width="32" height="32">
+            <h1>Feng Shui</h1>
+            <h1 id="fengshuicounter">0</h1>
+        </div>
+
+        <div id="mid">
+                <div id="Clicker">
+                    <button id="FengShuiClick" onclick="FengShuiClicker()">Click me</button>
+               </div>
+
+                <div id="mid1">
+                       
+                </div>
+
+
+                <div id="left">
+                    <div id="upgrades">
+                        <div class="upgradeline">
+                            <div id="upg1" onclick="clickupg1()">
+                                <img src="upg1.png" alt="" width="60" height="60" >
+                                <div>
+                                    <div class="upg1show">     
+                                        <div class="upgradeinfo">
+                                            <div class="nameandprice">
+                                            <h3>Feng Shui Concentration</h3>
+                                            <div class="price">
+                                                <h3><img src="ying.png" alt="" width="16" height="16"></h3>
+                                                <h3 id="upg1price">100</h3>
+                                            </div>
+                                            </div>
+                                            <div class="desc">
+                                                <p>Makes feng shui go brrr feng shui pr click * 2</p>
+                                            </div>
+                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="upg2" onclick="clickupg2()">
+                                <img src="upg1.png" alt="" width="60" height="60" >
+                                <div>
+                                    <div class="upg1show">     
+                                        <div class="upgradeinfo">
+                                            <div class="nameandprice">
+                                            <h3>Feng Shui Concentration 2</h3>
+                                            <div class="price">
+                                                <h3><img src="ying.png" alt="" width="16" height="16"></h3>
+                                                <h3 id="upg2price">500</h3>
+                                            </div>
+                                            </div>
+                                            <div class="desc">
+                                                <p>Makes even more feng shui. feng shui pr click * 2</p>
+                                            </div>
+                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <div id="Feng1" onclick="incense()">
+                            <div id="img1" >
+                                <img src="incense.jfif" alt="" width="60" height="60">
+                            </div>
+                            <div id="Name1">
+                                <h3>Incense</h3>
+                               <div class="Name1b">
+                                <h3><img src="ying.png" alt="" width="16" height="16"></h3>
+                                <h3 id="incprice">0</h3>
+                               </div>
+                               <div>
+                                <div class="inc1show">     
+                                    <div class="upgradeinfo">
+                                        <div class="nameandprice">
+                                        <h3>Incense</h3>
+
+                                        </div>
+                                        <div class="desc">
+                                            <p>Makes it easier to meditate +0.1 Feng per second.</p>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="Bought">
+                                <h1 id="incbought">0</h1>
+                            </div>
+                        </div>
+
+                        <div id="dis1" onclick="disiple()">
+                            <div class="img1" >
+                                <img src="incense.jfif" alt="" width="60" height="60">
+                            </div>
+                            <div class="Name1">
+                                <h3>Feng_Shui_Slave</h3>
+                               <div class="Name1b">
+                                <h3><img src="ying.png" alt="" width="16" height="16"></h3>
+                                <h3 id="disprice">0</h3>
+                               </div>
+                               <div>
+                                <div class="dis1show">     
+                                    <div class="upgradeinfo">
+                                        <div class="nameandprice">
+                                        <h3>Feng Shui slave</h3>
+
+                                        </div>
+                                        <div class="desc">
+                                            <p>Slaves that generate Feng Shui +1 Feng per second</p>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="Bought">
+                                <h1 id="disbought">0</h1>
+                            </div>
+
+
+
+                        </div>
+                        <div id="fen1" onclick="fengshuimaster()">
+                            <div class="img1" >
+                                <img src="master.jpg" alt="" width="60" height="60">
+                            </div>
+                            <div class="Name1">
+                                <h3>Feng_Shui_Master</h3>
+                               <div class="Name1b">
+                                <h3><img src="ying.png" alt="" width="16" height="16"></h3>
+                                <h3 id="fenprice">0</h3>
+                               </div>
+                               <div>
+                                <div class="fen1show">     
+                                    <div class="upgradeinfo">
+                                        <div class="nameandprice">
+                                        <h3>Feng Shui Master</h3>
+
+                                        </div>
+                                        <div class="desc">
+                                            <p>Feng Shui Master that generate Feng Shui +8 Feng per second</p>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="Bought">
+                                <h1 id="fenbought">0</h1>
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+        </div>
+
+
+        <script src="main.js"></script>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
