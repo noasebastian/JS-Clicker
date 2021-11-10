@@ -35,7 +35,12 @@ document.getElementById("dispversion").innerHTML = version;
        distimesbought = parseInt(localStorage.getItem("distimesbought"));
        fentimesbought = parseInt(localStorage.getItem("fentimesbought"));
        schtimesbought = parseInt(localStorage.getItem("schtimesbought"));
-      factimesbought = parseInt(localStorage.getItem("factimesbought"));
+       factimesbought = parseInt(localStorage.getItem("factimesbought"));
+       currincprice = parseInt(localStorage.getItem("currincprice"));
+      currdisprice = parseInt(localStorage.getItem("currdisprice"));
+      currfenprice = parseInt(localStorage.getItem("currfenprice"));
+      currschprice = parseInt(localStorage.getItem("currschprice"));
+      currfacprice = parseInt(localStorage.getItem("currfacprice"));
       upg1bought = parseInt(localStorage.getItem("upg1bought"));
       upg2bought = parseInt(localStorage.getItem("upg2bought"));
        console.log("Loaded!");
@@ -64,6 +69,11 @@ function save() {
     localStorage.setItem("fentimesbought", fentimesbought);
     localStorage.setItem("schtimesbought", schtimesbought);
     localStorage.setItem("factimesbought", factimesbought);
+    localStorage.setItem("currincprice", currincprice);
+    localStorage.setItem("currdisprice", currdisprice);
+    localStorage.setItem("currfenprice", currfenprice);
+    localStorage.setItem("currschprice", currschprice);
+    localStorage.setItem("currfacprice", currfacprice);
     localStorage.setItem("upg1bought", upg1bought);
     localStorage.setItem("upg2bought", upg2bought);
 
@@ -168,7 +178,7 @@ var disprice = 100;
 var distimesbought = 1;
 var dispdistimesbought =0;
 var disgain = 1;
-var currdisprice = 0;
+var currdisprice = 100;
 function disiple() {
     if (fengshui >= currdisprice) {
         fengshui = fengshui - currdisprice;
@@ -182,7 +192,7 @@ var fenprice = 1100;
 var fentimesbought = 1;
 var dispfentimesbought =0;
 var fengain = 8;
-var currfenprice = 0;
+var currfenprice = 1100;
 function fengshuimaster() {
     if (fengshui >= currfenprice) {
         fengshui = fengshui - currfenprice;
@@ -196,7 +206,7 @@ var schprice = 12000;
 var schtimesbought = 1;
 var dispschtimesbought =0;
 var schgain = 47;
-var currschprice = 0;
+var currschprice = 12000;
 function fengshuischool() {
     if (fengshui >= currschprice) {
         fengshui = fengshui - currschprice;
@@ -210,7 +220,7 @@ var facprice = 130000;
 var factimesbought = 1;
 var dispfactimesbought =0;
 var facgain = 260;
-var currfacprice = 0;
+var currfacprice = 130000;
 function fengshuifactory() {
     if (fengshui >= currfacprice) {
         fengshui = fengshui - currfacprice;
