@@ -1,4 +1,4 @@
-var version = 9;
+var version = 12;
 var fengshui = 0;
 var totfengshui = 0;
 var dispfengshui = 0;
@@ -6,18 +6,14 @@ var clickermultiplier = 1;
 var fengshuibase = 1;
 var pricemultiplier = 1.15;
 var buttons = document.getElementById("FengShuiClick");
-buttons.innerHTML = '<img src="Feng_shui.PNG" width="300" height="300" />';
 function FengShuiClicker() {
     fengshui = fengshui + fengshuibase * clickermultiplier;
     totfengshui = totfengshui + fengshuibase * clickermultiplier;
     document.getElementById("fengshuicounter").innerHTML = dispfengshui;
 }
-function moneycheat() {
-    fengshui = fengshui + 10000;
-    document.getElementById("fengshuicounter").innerHTML = dispfengshui;
-}
 
 
+document.getElementById("dispversion").innerHTML = version;
  window.onload = function load() {
    if(parseInt(localStorage.getItem("saved")) === version){
    if(localStorage.getItem("saved") !== null){
@@ -33,9 +29,13 @@ function moneycheat() {
         dispinctimesbought = parseInt(localStorage.getItem("dispinctimesbought"));
         dispdistimesbought = parseInt(localStorage.getItem("dispdistimesbought"));
         dispfentimesbought = parseInt(localStorage.getItem("dispfentimesbought"));
+        dispschtimesbought = parseInt(localStorage.getItem("dispschtimesbought"));
+        dispfactimesbought = parseInt(localStorage.getItem("dispfactimesbought"));
         inctimesbought = parseInt(localStorage.getItem("inctimesbought"));
        distimesbought = parseInt(localStorage.getItem("distimesbought"));
        fentimesbought = parseInt(localStorage.getItem("fentimesbought"));
+       schtimesbought = parseInt(localStorage.getItem("schtimesbought"));
+      factimesbought = parseInt(localStorage.getItem("factimesbought"));
       upg1bought = parseInt(localStorage.getItem("upg1bought"));
       upg2bought = parseInt(localStorage.getItem("upg2bought"));
        console.log("Loaded!");
@@ -57,9 +57,13 @@ function save() {
     localStorage.setItem("dispinctimesbought", dispinctimesbought);
     localStorage.setItem("dispdistimesbought", dispdistimesbought);
     localStorage.setItem("dispfentimesbought", dispfentimesbought);
+    localStorage.setItem("dispschtimesbought", dispschtimesbought);
+    localStorage.setItem("dispfactimesbought", dispfactimesbought);
     localStorage.setItem("inctimesbought", inctimesbought);
     localStorage.setItem("distimesbought", distimesbought);
     localStorage.setItem("fentimesbought", fentimesbought);
+    localStorage.setItem("schtimesbought", schtimesbought);
+    localStorage.setItem("factimesbought", factimesbought);
     localStorage.setItem("upg1bought", upg1bought);
     localStorage.setItem("upg2bought", upg2bought);
 
@@ -98,10 +102,16 @@ function updater() {
     document.getElementById("disprice").innerHTML = currdisprice;
     document.getElementById("fenbought").innerHTML = dispfentimesbought;
     document.getElementById("fenprice").innerHTML = currfenprice;
+    document.getElementById("schbought").innerHTML = dispschtimesbought;
+    document.getElementById("schprice").innerHTML = currschprice;
+    document.getElementById("facbought").innerHTML = dispfactimesbought;
+    document.getElementById("facprice").innerHTML = currfacprice;
 
     currincprice = Math.floor( incprice *  pricemultiplier * inctimesbought);
     currdisprice = Math.floor( disprice *  pricemultiplier * distimesbought);
     currfenprice = Math.floor( fenprice *  pricemultiplier * fentimesbought);
+    currschprice = Math.floor( schprice *  pricemultiplier * schtimesbought);
+    currfacprice = Math.floor( facprice *  pricemultiplier * factimesbought);
     if (totfengshui >= 100 && upg1bought == 0) {
         document.getElementById("#upg1").innerHTML = "#upg1 { display: block; }";
         
@@ -123,12 +133,16 @@ function fengprtick() {
     fengshui = fengshui + incgain * dispinctimesbought;
     fengshui = fengshui + disgain * dispdistimesbought;
     fengshui = fengshui + fengain * dispfentimesbought;
+    fengshui = fengshui + schgain * dispschtimesbought;
+    fengshui = fengshui + facgain * dispfactimesbought;
 
 
 
     totfengshui = totfengshui + incgain * dispinctimesbought;
     totfengshui = totfengshui + disgain * dispdistimesbought;
     totfengshui = totfengshui + fengain * dispfentimesbought;
+    totfengshui = totfengshui + schgain * dispschtimesbought;
+    totfengshui = totfengshui + facgain * dispfactimesbought;
 }
 
 
@@ -172,6 +186,32 @@ function fengshuimaster() {
         fengshui = fengshui - currfenprice;
         fentimesbought++;
         dispfentimesbought++;
+    }
+}
+
+var schprice = 12000;
+var schtimesbought = 1;
+var dispschtimesbought =0;
+var schgain = 47;
+var currschprice = 0;
+function fengshuischool() {
+    if (fengshui >= currschprice) {
+        fengshui = fengshui - currschprice;
+        schtimesbought++;
+        dispschtimesbought++;
+    }
+}
+
+var facprice = 130000;
+var factimesbought = 1;
+var dispfactimesbought =0;
+var facgain = 260;
+var currfacprice = 0;
+function fengshuifactory() {
+    if (fengshui >= currfacprice) {
+        fengshui = fengshui - currfacprice;
+        factimesbought++;
+        dispfactimesbought++;
     }
 }
 
