@@ -1,4 +1,4 @@
-var version = 13;
+var version = 14;
 var fengshui = 0;
 var totfengshui = 0;
 var dispfengshui = 0;
