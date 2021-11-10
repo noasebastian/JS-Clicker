@@ -1,4 +1,4 @@
-var version = 12;
+var version = 13;
 var fengshui = 0;
 var totfengshui = 0;
 var dispfengshui = 0;
@@ -107,11 +107,11 @@ function updater() {
     document.getElementById("facbought").innerHTML = dispfactimesbought;
     document.getElementById("facprice").innerHTML = currfacprice;
 
-    currincprice = Math.floor( incprice *  pricemultiplier * inctimesbought);
-    currdisprice = Math.floor( disprice *  pricemultiplier * distimesbought);
-    currfenprice = Math.floor( fenprice *  pricemultiplier * fentimesbought);
-    currschprice = Math.floor( schprice *  pricemultiplier * schtimesbought);
-    currfacprice = Math.floor( facprice *  pricemultiplier * factimesbought);
+
+    
+    
+    
+    
     if (totfengshui >= 100 && upg1bought == 0) {
         document.getElementById("#upg1").innerHTML = "#upg1 { display: block; }";
         
@@ -151,12 +151,13 @@ var incprice = 15;
 var inctimesbought = 1;
 var dispinctimesbought =0;
 var incgain = 0.1;
-var currincprice = 0;
+var currincprice = 15;
 function incense() {
     if (fengshui >= currincprice) {
         fengshui = fengshui - currincprice;
         inctimesbought++;
         dispinctimesbought++;
+        currincprice = Math.floor( currincprice *  pricemultiplier);
     }
 }
 
@@ -173,6 +174,7 @@ function disiple() {
         fengshui = fengshui - currdisprice;
         distimesbought++;
         dispdistimesbought++;
+        currdisprice = Math.floor( disprice *  pricemultiplier);
     }
 }
 
@@ -186,6 +188,7 @@ function fengshuimaster() {
         fengshui = fengshui - currfenprice;
         fentimesbought++;
         dispfentimesbought++;
+        currfenprice = Math.floor( fenprice *  pricemultiplier);
     }
 }
 
@@ -199,6 +202,7 @@ function fengshuischool() {
         fengshui = fengshui - currschprice;
         schtimesbought++;
         dispschtimesbought++;
+        currschprice = Math.floor( schprice *  pricemultiplier);
     }
 }
 
@@ -212,6 +216,7 @@ function fengshuifactory() {
         fengshui = fengshui - currfacprice;
         factimesbought++;
         dispfactimesbought++;
+        currfacprice = Math.floor( facprice *  pricemultiplier);
     }
 }
 
