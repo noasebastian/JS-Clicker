@@ -1,10 +1,11 @@
-var version = 14;
+var version = 15;
 var fengshui = 0;
 var totfengshui = 0;
 var dispfengshui = 0;
 var clickermultiplier = 1;
 var fengshuibase = 1;
 var pricemultiplier = 1.15;
+var incmultiplier = 1;
 var buttons = document.getElementById("FengShuiClick");
 function FengShuiClicker() {
     fengshui = fengshui + fengshuibase * clickermultiplier;
@@ -25,6 +26,7 @@ document.getElementById("dispversion").innerHTML = version;
         totfengshui = parseInt(localStorage.getItem("totfengshui"));
         dispfengshui = parseInt(localStorage.getItem("dispfengshui"));
         clickermultiplier = parseInt(localStorage.getItem("clickermultiplier"));
+        incmultiplier = parseInt(localStorage.getItem("incmultiplier"));
         fengshuibase = parseInt(localStorage.getItem("fengshuibase"));
         dispinctimesbought = parseInt(localStorage.getItem("dispinctimesbought"));
         dispdistimesbought = parseInt(localStorage.getItem("dispdistimesbought"));
@@ -43,6 +45,7 @@ document.getElementById("dispversion").innerHTML = version;
       currfacprice = parseInt(localStorage.getItem("currfacprice"));
       upg1bought = parseInt(localStorage.getItem("upg1bought"));
       upg2bought = parseInt(localStorage.getItem("upg2bought"));
+      incupg1bought = parseInt(localStorage.getItem("incupg1bought"));
        console.log("Loaded!");
 }
  }
@@ -58,6 +61,7 @@ function save() {
     localStorage.setItem("totfengshui", totfengshui);
     localStorage.setItem("dispfengshui", dispfengshui);
     localStorage.setItem("clickermultiplier", clickermultiplier);
+    localStorage.setItem("incmultiplier", incmultiplier);
     localStorage.setItem("fengshuibase", fengshuibase);
     localStorage.setItem("dispinctimesbought", dispinctimesbought);
     localStorage.setItem("dispdistimesbought", dispdistimesbought);
@@ -76,6 +80,7 @@ function save() {
     localStorage.setItem("currfacprice", currfacprice);
     localStorage.setItem("upg1bought", upg1bought);
     localStorage.setItem("upg2bought", upg2bought);
+    localStorage.setItem("incupg1bought", incupg1bought);
 
     console.log("Saved");
 
@@ -135,12 +140,17 @@ function updater() {
     } else {
         document.getElementById("#upg2").innerHTML = "#upg2 { display: none; }";
     }
+    if (totfengshui >= 100 && incupg1bought == 0) {
+        document.getElementById("#incupg1").innerHTML = "#incupg1 { display: block; }";
+    } else {
+        document.getElementById("#incupg1").innerHTML = "#incupg1 { display: none; }";
+    }
     
 }
 var b = setInterval(fengprtick,1000);
 function fengprtick() {
 
-    fengshui = fengshui + incgain * dispinctimesbought;
+    fengshui = fengshui + incgain * dispinctimesbought * incmultiplier;
     fengshui = fengshui + disgain * dispdistimesbought;
     fengshui = fengshui + fengain * dispfentimesbought;
     fengshui = fengshui + schgain * dispschtimesbought;
@@ -148,7 +158,7 @@ function fengprtick() {
 
 
 
-    totfengshui = totfengshui + incgain * dispinctimesbought;
+    totfengshui = totfengshui + incgain * dispinctimesbought * incmultiplier;
     totfengshui = totfengshui + disgain * dispdistimesbought;
     totfengshui = totfengshui + fengain * dispfentimesbought;
     totfengshui = totfengshui + schgain * dispschtimesbought;
@@ -250,4 +260,14 @@ function clickupg2() {
         upg2bought = 1;
     }
 
+}
+
+var incupg1price = 100;
+var incupg1bought = 0;
+function incupg1() {
+    if (fengshui >= incupg1price) {
+        fengshui = fengshui - incupg1price;
+        incmultiplier = incmultiplier * 2;
+        incupg1bought = 1;
+    }
 }
