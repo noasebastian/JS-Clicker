@@ -184,7 +184,7 @@ function disiple() {
         fengshui = fengshui - currdisprice;
         distimesbought++;
         dispdistimesbought++;
-        currdisprice = Math.floor( disprice *  pricemultiplier);
+        currdisprice = Math.floor( currdisprice *  pricemultiplier);
     }
 }
 
@@ -198,7 +198,7 @@ function fengshuimaster() {
         fengshui = fengshui - currfenprice;
         fentimesbought++;
         dispfentimesbought++;
-        currfenprice = Math.floor( fenprice *  pricemultiplier);
+        currfenprice = Math.floor( currfenprice *  pricemultiplier);
     }
 }
 
@@ -212,7 +212,7 @@ function fengshuischool() {
         fengshui = fengshui - currschprice;
         schtimesbought++;
         dispschtimesbought++;
-        currschprice = Math.floor( schprice *  pricemultiplier);
+        currschprice = Math.floor( currschprice *  pricemultiplier);
     }
 }
 
@@ -226,7 +226,7 @@ function fengshuifactory() {
         fengshui = fengshui - currfacprice;
         factimesbought++;
         dispfactimesbought++;
-        currfacprice = Math.floor( facprice *  pricemultiplier);
+        currfacprice = Math.floor( currfacprice *  pricemultiplier);
     }
 }
 
