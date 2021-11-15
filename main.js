@@ -1,4 +1,4 @@
-var version = 15;
+var version = 16;
 var fengshui = 0;
 var totfengshui = 0;
 var dispfengshui = 0;
@@ -46,6 +46,7 @@ document.getElementById("dispversion").innerHTML = version;
       upg1bought = parseInt(localStorage.getItem("upg1bought"));
       upg2bought = parseInt(localStorage.getItem("upg2bought"));
       incupg1bought = parseInt(localStorage.getItem("incupg1bought"));
+      incupg2bought = parseInt(localStorage.getItem("incupg2bought"));
        console.log("Loaded!");
 }
  }
@@ -81,6 +82,7 @@ function save() {
     localStorage.setItem("upg1bought", upg1bought);
     localStorage.setItem("upg2bought", upg2bought);
     localStorage.setItem("incupg1bought", incupg1bought);
+    localStorage.setItem("incupg2bought", incupg2bought);
 
     console.log("Saved");
 
@@ -144,6 +146,11 @@ function updater() {
         document.getElementById("#incupg1").innerHTML = "#incupg1 { display: block; }";
     } else {
         document.getElementById("#incupg1").innerHTML = "#incupg1 { display: none; }";
+    }
+    if (totfengshui >= 500 && incupg2bought == 0) {
+        document.getElementById("#incupg2").innerHTML = "#incupg2 { display: block; }";
+    } else {
+        document.getElementById("#incupg2").innerHTML = "#incupg2 { display: none; }";
     }
     
 }
@@ -269,5 +276,15 @@ function incupg1() {
         fengshui = fengshui - incupg1price;
         incmultiplier = incmultiplier * 2;
         incupg1bought = 1;
+    }
+}
+
+var incupg2price = 500;
+var incupg2bought = 0;
+function incupg2() {
+    if (fengshui >= incupg2price) {
+        fengshui = fengshui - incupg2price;
+        incmultiplier = incmultiplier * 2;
+        incupg2bought = 1;
     }
 }
