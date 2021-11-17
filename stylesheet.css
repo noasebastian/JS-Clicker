@@ -177,6 +177,14 @@
     right: 255%;
     
 }
+#settings {
+    display: none;
+    position: relative;
+    width: 100px;
+    height: 35%;
+    
+    
+}
 #upg1:hover .upg1show {
     display: block;
    }
@@ -202,5 +210,8 @@
     display: block;
 }
 #fac1:hover .fac1show {
+    display: block;
+}
+#top1right:hover #settings {
     display: block;
 }
