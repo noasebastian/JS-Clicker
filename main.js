@@ -254,6 +254,9 @@ function clickupg1() {
         fengshui = fengshui - upg1price;
         clickermultiplier = clickermultiplier * 2;
         upg1bought = 1;
+        
+        var audio = document.getElementById("audio");
+        audio.play();
     }
 
 }
