@@ -1,4 +1,4 @@
-var version = 16;
+var version = 19;
 var fengshui = 0;
 var totfengshui = 0;
 var dispfengshui = 0;
@@ -6,6 +6,7 @@ var clickermultiplier = 1;
 var fengshuibase = 1;
 var pricemultiplier = 1.15;
 var incmultiplier = 1;
+var dismultiplier = 1;
 var buttons = document.getElementById("FengShuiClick");
 function FengShuiClicker() {
     fengshui = fengshui + fengshuibase * clickermultiplier;
@@ -27,6 +28,7 @@ document.getElementById("dispversion").innerHTML = version;
         dispfengshui = parseInt(localStorage.getItem("dispfengshui"));
         clickermultiplier = parseInt(localStorage.getItem("clickermultiplier"));
         incmultiplier = parseInt(localStorage.getItem("incmultiplier"));
+        dismultiplier = parseInt(localStorage.getItem("dismultiplier"));
         fengshuibase = parseInt(localStorage.getItem("fengshuibase"));
         dispinctimesbought = parseInt(localStorage.getItem("dispinctimesbought"));
         dispdistimesbought = parseInt(localStorage.getItem("dispdistimesbought"));
@@ -47,6 +49,8 @@ document.getElementById("dispversion").innerHTML = version;
       upg2bought = parseInt(localStorage.getItem("upg2bought"));
       incupg1bought = parseInt(localStorage.getItem("incupg1bought"));
       incupg2bought = parseInt(localStorage.getItem("incupg2bought"));
+      disupgbought = parseInt(localStorage.getItem("disupgbought"));
+      disupg2bought = parseInt(localStorage.getItem("disupg2bought"));
        console.log("Loaded!");
 }
  }
@@ -63,6 +67,7 @@ function save() {
     localStorage.setItem("dispfengshui", dispfengshui);
     localStorage.setItem("clickermultiplier", clickermultiplier);
     localStorage.setItem("incmultiplier", incmultiplier);
+    localStorage.setItem("dismultiplier", dismultiplier);
     localStorage.setItem("fengshuibase", fengshuibase);
     localStorage.setItem("dispinctimesbought", dispinctimesbought);
     localStorage.setItem("dispdistimesbought", dispdistimesbought);
@@ -83,6 +88,8 @@ function save() {
     localStorage.setItem("upg2bought", upg2bought);
     localStorage.setItem("incupg1bought", incupg1bought);
     localStorage.setItem("incupg2bought", incupg2bought);
+    localStorage.setItem("disupgbought", incupg2bought);
+    localStorage.setItem("disupg2bought", incupg2bought);
 
     console.log("Saved");
 
@@ -152,13 +159,23 @@ function updater() {
     } else {
         document.getElementById("#incupg2").innerHTML = "#incupg2 { display: none; }";
     }
+    if (totfengshui >= 1000 && disupgbought == 0) {
+        document.getElementById("#disupg1").innerHTML = "#disupg1 { display: block; }";
+    } else {
+        document.getElementById("#disupg1").innerHTML = "#disupg1 { display: none; }";
+    }
+    if (totfengshui >= 5000 && disupg2bought == 0) {
+        document.getElementById("#disupg2").innerHTML = "#disupg2 { display: block; }";
+    } else {
+        document.getElementById("#disupg2").innerHTML = "#disupg2 { display: none; }";
+    }
     
 }
 var b = setInterval(fengprtick,1000);
 function fengprtick() {
 
     fengshui = fengshui + incgain * dispinctimesbought * incmultiplier;
-    fengshui = fengshui + disgain * dispdistimesbought;
+    fengshui = fengshui + disgain * dispdistimesbought * dismultiplier;
     fengshui = fengshui + fengain * dispfentimesbought;
     fengshui = fengshui + schgain * dispschtimesbought;
     fengshui = fengshui + facgain * dispfactimesbought;
@@ -166,7 +183,7 @@ function fengprtick() {
 
 
     totfengshui = totfengshui + incgain * dispinctimesbought * incmultiplier;
-    totfengshui = totfengshui + disgain * dispdistimesbought;
+    totfengshui = totfengshui + disgain * dispdistimesbought * dismultiplier;
     totfengshui = totfengshui + fengain * dispfentimesbought;
     totfengshui = totfengshui + schgain * dispschtimesbought;
     totfengshui = totfengshui + facgain * dispfactimesbought;
@@ -289,5 +306,25 @@ function incupg2() {
         fengshui = fengshui - incupg2price;
         incmultiplier = incmultiplier * 2;
         incupg2bought = 1;
+    }
+}
+
+var disupgprice = 5000;
+var disupgbought = 0;
+function disupg1() {
+    if (fengshui >= disupgprice) {
+        fengshui = fengshui - disupgprice;
+        dismultiplier = dismultiplier * 2;
+        disupgbought = 1;
+    }
+}
+
+var disupg2price = 5000;
+var disupg2bought = 0;
+function disupg2() {
+    if (fengshui >= disupg2price) {
+        fengshui = fengshui - disupg2price;
+        dismultiplier = dismultiplier * 2;
+        disupg2bought = 1;
     }
 }

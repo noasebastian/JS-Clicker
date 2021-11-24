@@ -197,6 +197,12 @@
 #incupg2:hover .upg1show {
     display: block;
 }
+#disupg1:hover .upg1show {
+    display: block;
+}
+#disupg2:hover .upg1show {
+    display: block;
+}
 #Feng1:hover .inc1show {
     display: block;
 }
